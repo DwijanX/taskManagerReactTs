@@ -1,6 +1,6 @@
 import CreateTaskForm from './taskForm';
 import TaskService from '../../../../ports/task.port';
-const App = () => {
+const newTaskView = () => {
   const taskService = new TaskService();
   const handleCreateTask = (title:string) => {
     taskService.createTask(title)
@@ -14,4 +14,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default newTaskView;

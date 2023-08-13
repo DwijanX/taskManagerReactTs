@@ -1,11 +1,11 @@
 import './App.css'
-import TaskListView from './application/pages/taskList/application/components/taskListView'
+import AppRouter from './router'
 
 function App() {
 
   return (
     <>
-      <TaskListView/>
+      <AppRouter/>
     </>
   )
 }
