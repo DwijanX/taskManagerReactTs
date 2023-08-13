@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import TaskService from "../task.port";
-import TaskApi from "../../adapters/task.adapter";
-import { Task } from "../../domain/task";
+import TaskService from "../../../../ports/task.port";
+import { Task } from "../../../../../domain/models/task";
 
-function TaskList() {
+function TaskListView() {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const taskService = new TaskService(new TaskApi());
+  const taskService = new TaskService();
 
   useEffect(() => {
     taskService.getAllTasks().then((tasks) => {
@@ -28,4 +27,4 @@ function TaskList() {
   );
 }
 
-export default TaskList;
+export default TaskListView;

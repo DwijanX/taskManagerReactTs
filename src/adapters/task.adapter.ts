@@ -1,4 +1,4 @@
-import { Task } from "../domain/task";
+import { Task } from "../domain/models/task";
 class TaskApi {
     async getAllTasks(): Promise<Task[]> {
         return new Promise((resolve) => {

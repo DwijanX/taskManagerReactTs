@@ -1,11 +1,11 @@
-import TaskApi from "../adapters/task.adapter";
-import { Task } from "../domain/task";
+import TaskApi from "../../adapters/task.adapter";
+import { Task } from "../../domain/models/task";
 
 class TaskService {
     private taskApi: TaskApi;
 
-    constructor(taskApi: TaskApi) {
-        this.taskApi = taskApi;
+    constructor() {
+        this.taskApi = new TaskApi();
     }
 
     async getAllTasks(): Promise<Task[]> {
@@ -17,6 +17,11 @@ class TaskService {
             console.error("Error fetching tasks:", error);
             return [];
         }
+    }
+
+    async createTask(title:string): Promise<Task>{
+        //should add the task
+        return new Task(1,title,false)
     }
 }
 
