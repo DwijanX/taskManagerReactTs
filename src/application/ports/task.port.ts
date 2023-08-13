@@ -19,9 +19,14 @@ class TaskService {
         }
     }
 
-    async createTask(title:string): Promise<Task>{
-        //should add the task
-        return new Task(1,title,false)
+    async createTask(title:string): Promise<Task|void>{
+        try {
+            let createdTask=new Task(1,title,false)
+            await this.taskApi.createTask(createdTask)
+            return createdTask  
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 

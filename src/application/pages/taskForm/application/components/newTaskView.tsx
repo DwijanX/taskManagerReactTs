@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
 import CreateTaskForm from './taskForm';
 import TaskService from '../../../../ports/task.port';
 const App = () => {
   const taskService = new TaskService();
   const handleCreateTask = (title:string) => {
-    let createdTask=taskService.createTask(title)
+    taskService.createTask(title)
   };
 
   return (
