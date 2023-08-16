@@ -28,6 +28,23 @@ class TaskService {
             console.log(error);
         }
     }
+    async getTaskById(id: number): Promise<Task | null> {
+        try {
+            const task = await this.taskApi.getTaskById(id);
+            return task;
+        } catch (error) {
+            console.error(`Error fetching task with ID ${id}:`, error);
+            return null;
+        }
+    }
+    async updateTask(id: number, updatedTask: Task): Promise<void> {
+        try {
+          await this.taskApi.updateTask(id, updatedTask);
+        } catch (error) {
+          console.error(`Error updating task with ID ${id}:`, error);
+          // Handle the error appropriately
+        }
+      }
 }
 
 export default TaskService;

@@ -17,6 +17,22 @@ class TaskApi {
     localStorage.setItem(TaskApi.TASKS_STORAGE_KEY, JSON.stringify(tasks));
     return task;
   }
+  async getTaskById(id: number): Promise<Task | null> {
+    const tasks = await this.getAllTasks();
+    const task = tasks.find((t) => t.id === id);
+    return task || null;
+  }
+  async updateTask(id: number, updatedTask: Task): Promise<void> {
+    const tasks = await this.getAllTasks();
+    const taskIndex = tasks.findIndex((task) => task.id === id);
+
+    if (taskIndex !== -1) {
+      tasks[taskIndex] = updatedTask;
+      localStorage.setItem(TaskApi.TASKS_STORAGE_KEY, JSON.stringify(tasks));
+    } else {
+      throw new Error(`Task with ID ${id} not found.`);
+    }
+  }
 }
 
 export default TaskApi;
