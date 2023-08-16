@@ -33,6 +33,11 @@ class TaskApi {
       throw new Error(`Task with ID ${id} not found.`);
     }
   }
+  async deleteTask(id: number): Promise<void> {
+    const tasks = await this.getAllTasks();
+    const updatedTasks = tasks.filter(task => task.id !== id);
+    localStorage.setItem(TaskApi.TASKS_STORAGE_KEY, JSON.stringify(updatedTasks));
+  }
 }
 
 export default TaskApi;

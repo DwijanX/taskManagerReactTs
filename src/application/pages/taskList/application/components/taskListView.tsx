@@ -9,17 +9,25 @@ function TaskListView() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const taskService = new TaskService();
 
-  useEffect(() => {
+  const handleFetchItems=()=>{
     taskService.getAllTasks().then((tasks) => {
       setTasks(tasks);
     });
+  }
+  useEffect(() => {
+    handleFetchItems()
   }, []);
   const handleEdit = (task: Task) => {
     navigate(`/update/${task.id}`);
   };
 
   const handleDelete = (taskId: number) => {
-    // Handle deleting task
+    const deleteAction=async()=>{
+      await taskService.deleteTask(taskId)
+      handleFetchItems()
+    }    
+    deleteAction()
+
   };
 
   return (

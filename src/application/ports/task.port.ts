@@ -45,6 +45,14 @@ class TaskService {
           // Handle the error appropriately
         }
       }
+      async deleteTask(id: number): Promise<void> {
+        try {
+          await this.taskApi.deleteTask(id);
+        } catch (error) {
+          console.error(`Error deleting task with ID ${id}:`, error);
+          // Handle the error appropriately
+        }
+      }
 }
 
 export default TaskService;
