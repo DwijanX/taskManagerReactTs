@@ -1,7 +1,7 @@
 import  { useEffect, useState } from "react";
 import TaskService from "../../../../ports/task.port";
 import { Task } from "../../../../../domain/models/task";
-
+import Navbar from "../../../../components/navbar";
 function TaskListView() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const taskService = new TaskService();
@@ -14,6 +14,7 @@ function TaskListView() {
 
   return (
     <div>
+      <Navbar></Navbar>
       <h2>Task List</h2>
       <ul>
         {tasks.map((task) => (

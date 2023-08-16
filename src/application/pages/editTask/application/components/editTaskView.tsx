@@ -3,7 +3,7 @@ import { Task } from '../../../../../domain/models/task';
 import TaskService from '../../../../ports/task.port';
 import EditTaskForm from './editTaskForm';
 import { useParams } from 'react-router-dom';
-
+import Navbar from '../../../../components/navbar';
 const EditTaskView = () => {
   const { id } = useParams();
   const [task,setTask]=useState<Task|null>()
@@ -21,6 +21,7 @@ const EditTaskView = () => {
 
   return (
     <div>
+      <Navbar></Navbar>
       <h1>Task Management App</h1>
       {task &&<EditTaskForm onEditTask={handleEditTask} task={task}/>}
     </div>
